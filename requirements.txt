@@ -1,0 +1,8 @@
+pandas
+multitasking
+
+# Alpha Vantage limits this to python 3.x due to its async support.
+# If you remove the aoihttp dependency from the build and don't use async
+# this will still work on python 2.7
+
+alpha-vantage==2.2.0
