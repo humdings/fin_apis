@@ -1,4 +1,5 @@
 import multitasking
+multitasking.set_max_threads(multitasking.config["CPU_CORES"] * 5)
 
 
 def multicall(func, params, *args, **kwargs):
@@ -20,18 +21,18 @@ def multicall(func, params, *args, **kwargs):
 
 
 @multitasking.task
-def _multitask(out, func, symbol, *args, **kwargs):
+def _multitask(out, func, param, *args, **kwargs):
     """
     Utility for making the same api call several times
     at once with different parameters.
 
     :param out: dict: container for returned data
     :param func: api method to call
-    :param symbol: the parameter in the api call that is changing
-    :param args: arguments for api method
-    :param kwargs: arguments for api method
+    :param param: the parameter in the api call that is changing (usually symbols)
+    :param args: positional arguments for api method
+    :param kwargs: keyword arguments for api method
 
     :return: None: Only populates the 'out' dictionary
     """
-    result = func(symbol, *args, **kwargs)
-    out[symbol] = result
+    result = func(param, *args, **kwargs)
+    out[param] = result

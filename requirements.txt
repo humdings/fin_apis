@@ -6,3 +6,4 @@ multitasking
 # this will still work on python 2.7
 
 alpha-vantage==2.2.0
+# alpha-vantage==git+https://github.com/humdings/alpha_vantage.git@no-async  # For python 2.7 install
